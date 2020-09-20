@@ -11,6 +11,9 @@ public class ThreadServiceV2 {
 	AutoRefundService autoRefundService = new AutoRefundService();
 	AutoRefundServiceV2 autoRefundServiceV2 = new AutoRefundServiceV2();
 	
+	/*
+	 * scheduleFixedDelayTask method is a schedular. In every 15 minutus this method is called automatically for check refund. 
+	 */
 //	@Scheduled(fixedDelay = 1000*60*15)
 	public void scheduleFixedDelayTask() {
 		try{
