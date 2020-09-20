@@ -22,6 +22,9 @@ public class AmazonPayEnvelopeEncryptionController {
 	
 	private static final SecureRandom SECURE_RANDOM = new SecureRandom();
 	
+	/*
+	 * This method is used for encrypt data in Base64. Mostly used in Amazonpay API.
+	 */
 	public static Map<String, String> encrypt(String stringToBeEncrypted) {
 		System.out.println("stringToBeEncrypted in controller "+stringToBeEncrypted);
 		byte[] rawKey = new byte[16];

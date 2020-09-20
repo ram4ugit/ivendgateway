@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.limitlessmobil.ivendgateway.util.RandomString;
 import com.limitlessmobility.iVendGateway.controller.amazonpay.SignatureUtil;
 import com.limitlessmobility.iVendGateway.dao.EventLogDao;
@@ -34,6 +33,10 @@ import com.limitlessmobility.iVendGateway.model.amazonpay.RequestToSign;
 import com.limitlessmobility.iVendGateway.paytm.model.EventLogs;
 import com.limitlessmobility.iVendGateway.paytm.model.PaymentInitiation;
 
+/**
+ * @author Amar
+ *
+ */
 @Controller
 @RequestMapping("/v1/amazonpay")
 public class AmazonPayQRServiceV1{
@@ -41,13 +44,11 @@ public class AmazonPayQRServiceV1{
 	
 	private static final String currencyCode="INR";
 	
-	private static final String keyId="18f35507-94e8-45d2-98a6-81bf7fed090c"; 
 	
 	private static final String signatureMethod="HmacSHA384";
 	
 	private static final String signatureVersion="4";
 	
-	private static final String accessKeyId="07ccf898-a2cf-4765-b517-12330e931117";
 	
 	private static final String HTTPRequestMethod="POST";
 	
@@ -58,6 +59,12 @@ public class AmazonPayQRServiceV1{
 	
 	
 	
+	/**
+	 * This API is used to get QR of Amazonpay. 
+	 * @version 1
+	 * @param amazonQRRequestData
+	 * @throws Exception
+	 */
 	@RequestMapping(value = "/getqr", method = RequestMethod.POST)
 	@ResponseBody
 	private String getQr(@RequestBody AmazonQRRequestData amazonQRRequestData) throws Exception{
@@ -84,7 +91,6 @@ public class AmazonPayQRServiceV1{
     	EventLogDao eventLogDao = new eventLogDaoImpl();
     	EventLogs eventLogRequest=new EventLogs();
     	
-    	 ObjectMapper objectMapper =new ObjectMapper();;
         
         //convert request data to json format
         

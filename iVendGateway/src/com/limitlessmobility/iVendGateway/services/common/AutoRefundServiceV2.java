@@ -25,6 +25,10 @@ import com.limitlessmobility.iVendGateway.paytm.model.PaytmRefundRequestModelFin
 public class AutoRefundServiceV2 {
 	CommonControllerV2 commonController = new CommonControllerV2();
 	
+	
+	/**
+	 * This Method is used for Store data in db who have to do refund, called by schedular
+	 */
 	@RequestMapping(value="/autoRefund", method=RequestMethod.POST)
 	@ResponseBody
 	public String getRefundList(){
@@ -33,12 +37,19 @@ public class AutoRefundServiceV2 {
 		return "Success";
 	}
 	
+	/**
+	 * This Method is used for automatic refund, called by schedular
+	 */
 	@RequestMapping(value="/autoRefundProcess", method=RequestMethod.POST)
 	@ResponseBody
 	public String autoRefundProcess(){
 		commonController.autoRefundProcessV2();
 		return "Success";
 	}
+	
+	/**
+	 * This Method is used for check status of auto refund, called by schedular
+	 */
 	@RequestMapping(value="/checkStatusRefundProcess", method=RequestMethod.POST)
 	@ResponseBody
 	public String checkStatusRefundProcess(){
@@ -46,6 +57,9 @@ public class AutoRefundServiceV2 {
 		return "Success";
 	}
 	
+	/**
+	 * This Method is used for manual refund, called by common refund
+	 */
 	@RequestMapping(value="/manualRefund", method=RequestMethod.POST)
 	@ResponseBody
 	public ResponseDTO manualRefundProcesss(@RequestBody ManualRefundRequest refundRequest){

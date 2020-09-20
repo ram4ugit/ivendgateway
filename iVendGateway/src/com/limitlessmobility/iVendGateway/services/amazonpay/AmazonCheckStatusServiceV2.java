@@ -30,7 +30,6 @@ import com.limitlessmobility.iVendGateway.dao.common.CommonCredentialDao;
 import com.limitlessmobility.iVendGateway.dao.common.CommonCredentialDaoImpl;
 import com.limitlessmobility.iVendGateway.dao.common.CommonService;
 import com.limitlessmobility.iVendGateway.model.amazonpay.CheckStatusInitialData;
-import com.limitlessmobility.iVendGateway.model.amazonpay.CredentialData;
 import com.limitlessmobility.iVendGateway.model.amazonpay.RequestToSign;
 import com.limitlessmobility.iVendGateway.model.common.OperatorDetail;
 import com.limitlessmobility.iVendGateway.paytm.model.PaymentTransaction;
@@ -49,6 +48,10 @@ public class AmazonCheckStatusServiceV2 {
 	
 	private static final String CanonicalURI="/payment/charge/status/v1";
 	
+	
+	/*
+	 * This API is used to get check status of Amazonppay transaction.
+	 */
 	@RequestMapping(value="/checkStatus",method=RequestMethod.POST)
 	@ResponseBody
 	public  String getAmazonTransactionstatus(@RequestBody CheckStatusInitialData checkStatusInitialData) throws JSONException{
@@ -76,7 +79,6 @@ public class AmazonCheckStatusServiceV2 {
 		boolean isexist=true;
 		
 		AmazonPayDao amazonPayDao=new AmazonDaoImpl();
-		CredentialData credentialData=new CredentialData();
 		PaymentTransaction paymentTransaction = new PaymentTransaction();
 		CommonCredentialDao commonCredentialDao = new CommonCredentialDaoImpl();
 		

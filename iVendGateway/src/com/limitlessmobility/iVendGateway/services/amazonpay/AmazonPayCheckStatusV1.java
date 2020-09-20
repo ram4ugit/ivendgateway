@@ -38,14 +38,11 @@ public class AmazonPayCheckStatusV1 {
 	
 	private static final Logger logger = Logger.getLogger(AmazonPayCheckStatusV1.class);
 	
-	private static final String transactionIdType ="MERCHANT_TXN_ID";
-	
-	private static final String signatureMethod ="HmacSHA384";
-	
-	private static final String signatureVersion ="4";
-	
 	private static final String CanonicalURI="/payment/charge/status/v1";
 	
+	/*
+	 * This API is used to get check status of Amazonppay transaction. Version 1
+	 */
 	@RequestMapping(value="/checkStatus",method=RequestMethod.POST)
 	@ResponseBody
 	public  String getAmazonTransactionstatus(@RequestBody CheckStatusInitialData checkStatusInitialData) throws JSONException{
@@ -84,7 +81,6 @@ public class AmazonPayCheckStatusV1 {
 		 		accessKeyId = credentialData.getSecretKey().trim();
 		 		System.out.println("accessKeyId " + accessKeyId);
 			} catch (Exception e) {
-				// TODO: handle exception
 				System.out.println("Problem while fetching credential from Database... "+e	);
 			}	
 		   if (checkStatusInitialData.getPosId()!=null) {
@@ -111,7 +107,6 @@ public class AmazonPayCheckStatusV1 {
 	        try {
 				requestBody.put("signature", SignatureUtil.generateSignatures(getRequestToSign(requestBody), CommonService.getSecretKey(merchantId)));
 			} catch (Exception e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
        
@@ -145,7 +140,6 @@ public class AmazonPayCheckStatusV1 {
     		requestData.put("iv", iv);
     		requestData.put("key", key);
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 		urlparameter= requestData.toString();
 		
@@ -227,7 +221,6 @@ public class AmazonPayCheckStatusV1 {
 					
 				}
 			} catch (Exception e) {
-				// TODO: handle exception
 				//e.printStackTrace();
 			}
 		    

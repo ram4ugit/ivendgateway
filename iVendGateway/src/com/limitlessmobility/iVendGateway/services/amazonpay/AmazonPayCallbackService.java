@@ -22,7 +22,6 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-import com.limitlessmobility.iVendGateway.controller.amazonpay.AmazonPayCallbackController;
 import com.limitlessmobility.iVendGateway.dao.EventLogDao;
 import com.limitlessmobility.iVendGateway.dao.TransactionDao;
 import com.limitlessmobility.iVendGateway.dao.TransactionDaoImpl;
@@ -39,6 +38,9 @@ public class AmazonPayCallbackService{
 
 	//private static final Logger logger = Logger.getLogger(AmazonPayCallbackServiceR.class);
 
+	/*
+	 * THis API is used to store Amazonpay Callback. Called by Amazonpay directly.
+	 */
 	@RequestMapping(value = "/initiate", method = RequestMethod.POST)
 	@ResponseBody
 	@Consumes("text/plain")
@@ -85,7 +87,6 @@ public class AmazonPayCallbackService{
 
 		String xml = jsonObject2.getString("NotificationData");
 
-		AmazonPayCallbackController amazonPayCallbackController = new AmazonPayCallbackController();
 		PaymentTransaction paymentTransaction = new PaymentTransaction();
 
 		try {
@@ -171,7 +172,6 @@ public class AmazonPayCallbackService{
 			System.out.println("i am returning with response");
 
 		} catch (Exception ace) {
-			// TODO Auto-generated catch block
 			ace.printStackTrace();
 		}
 
@@ -214,13 +214,13 @@ public class AmazonPayCallbackService{
 			 
 		    } 
 		}catch (Exception pte) {
-			// TODO: handle exception
+			pte.printStackTrace();
 		}
 		 try {
 			EventLogDao dao=new eventLogDaoImpl();
 			 dao.saveEventLog(eventLogs);
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		 
 		    JSONObject finalresponse = new JSONObject();

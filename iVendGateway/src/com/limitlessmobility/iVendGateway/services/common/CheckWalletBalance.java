@@ -28,12 +28,9 @@ import com.limitlessmobil.ivendgateway.util.TokenAuthModel;
 import com.limitlessmobility.iVendGateway.controller.validation.CommonValidationUtility;
 import com.limitlessmobility.iVendGateway.dao.common.CommonService;
 import com.limitlessmobility.iVendGateway.model.common.CheckBalanceRequest;
-import com.limitlessmobility.iVendGateway.model.wallet.paytm.BlockAmountRequest;
 import com.limitlessmobility.iVendGateway.model.wallet.paytm.CheckStatusBody;
 import com.limitlessmobility.iVendGateway.model.wallet.paytm.CheckStatusHead;
 import com.limitlessmobility.iVendGateway.psp.model.OperatorPspEntity;
-import com.limitlessmobility.iVendGateway.services.wallet.WalletBlockService;
-import com.limitlessmobility.iVendGateway.services.wallet.paytm.PaytmBlockAmountService;
 import com.paytm.pg.merchant.CheckSumServiceHelper;
 
 @RestController

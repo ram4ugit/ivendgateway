@@ -154,6 +154,13 @@ public class MachineConfigDaoImpl implements MachineConfigDao{
 		        ps.setString(15, paymentMode.getRefundMsg());
 		        ps.setString(16, machineConfigRequest.getKeyboardType());
 		        ps.setString(17, paymentMode.getPspName());
+		        
+		        if(paymentMode.getPspId().trim().equalsIgnoreCase("188")){
+		        	ps.setString(17, "Vendiman Wallet");
+		        }else if(paymentMode.getPspId().trim().equalsIgnoreCase("Cards")){
+		        	ps.setString(17, "Credit/Debit Cards");
+		        }
+		        
 		        ps.setString(18, paymentMode.getPspTid());
 		        ps.setInt(19, paymentMode.getSequence());
 		         status = ps.executeUpdate();

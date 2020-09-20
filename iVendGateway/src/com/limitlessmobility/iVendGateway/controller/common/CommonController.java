@@ -9,6 +9,9 @@ public class CommonController {
 
 	CommonDao cdao = new CommonDaoImpl();
 	
+	/*
+	 * getRefundList service is used for get list of refund from terminal log.
+	 */
 	public PaytmRefundRequestModelFinal getRefundList(){
 		PaytmRefundRequestModelFinal paytmRefundRequestModelFinal = new PaytmRefundRequestModelFinal();
 		
@@ -18,6 +21,7 @@ public class CommonController {
 		return paytmRefundRequestModelFinal;
 	}
 
+	
 	public void getTerminalForRefund(){
 		
 		cdao.getTerminalForRefund();

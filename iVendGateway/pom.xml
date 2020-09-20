@@ -3,7 +3,7 @@
   <groupId>iVendGateway</groupId>
   <artifactId>iVendGateway</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
+  <packaging>jar</packaging>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <resources>
@@ -51,5 +51,6 @@
     <artifactId>javax.websocket-api</artifactId>
     <version>1.1</version>
 </dependency>
+
 </dependencies>
 </project>

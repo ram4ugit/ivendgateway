@@ -44,12 +44,17 @@ public class PayTmCheckStatusV2 {
 	public static final String VERSION = "v1";
 	CommonDao cdao = new CommonDaoImpl();
 
-	/*
-	 * This Method is used to check status using transactions using transaction
-	 * ID.
-	 */
 //	@RequestMapping(value = "/paymentCheckStatus", method = RequestMethod.POST)
 //	@ResponseBody
+	/**
+	 * This Method is used to check paytm transaction status using transaction id, called by common check status API
+	 * @param request
+	 * @param pspId
+	 * @param appId
+	 * @param orderId
+	 * @param posId
+	 * @param amount
+	 */
 	public String getPaytmCheckStatus(@RequestBody String request, String pspId, String appId, String orderId, String posId, String amount) throws Exception {
 
 		System.out.println("getPaytmCheckStatus Method START..request.." + request + "...orderid..." + orderId + "...terminalID..." + posId);

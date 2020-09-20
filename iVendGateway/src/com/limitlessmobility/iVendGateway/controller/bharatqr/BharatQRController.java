@@ -1,15 +1,14 @@
 package com.limitlessmobility.iVendGateway.controller.bharatqr;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.limitlessmobility.iVendGateway.dao.TransactionDao;
 import com.limitlessmobility.iVendGateway.dao.TransactionDaoImpl;
 import com.limitlessmobility.iVendGateway.paytm.model.PaymentTransaction;
 
-
 public class BharatQRController {
 
+	/*
+	 * saveTransaction is used for call the DAO and save the QR details is DB 
+	 */
 	public String saveTransaction(PaymentTransaction paymentTransaction){
 		TransactionDao tdao = new TransactionDaoImpl();
 		boolean isInsert = tdao.saveTransaction(paymentTransaction);

@@ -20,11 +20,13 @@ import com.limitlessmobility.iVendGateway.dao.QRDao;
 import com.limitlessmobility.iVendGateway.dao.QRDaoImpl;
 import com.limitlessmobility.iVendGateway.dao.common.CommonCredentialDao;
 import com.limitlessmobility.iVendGateway.dao.common.CommonCredentialDaoImpl;
+import com.limitlessmobility.iVendGateway.dao.common.CommonService;
 import com.limitlessmobility.iVendGateway.dao.phonepe.PhonePeDao;
 import com.limitlessmobility.iVendGateway.dao.phonepe.PhonePeDaoImpl;
 import com.limitlessmobility.iVendGateway.db.DbConfigration;
 import com.limitlessmobility.iVendGateway.db.DbConfigrationImpl;
 import com.limitlessmobility.iVendGateway.model.common.OperatorDetail;
+import com.limitlessmobility.iVendGateway.model.common.RefundDbModel;
 import com.limitlessmobility.iVendGateway.model.phonepe.PPRefundInitialData;
 import com.limitlessmobility.iVendGateway.model.phonepe.PSPMerchantDetail;
 import com.limitlessmobility.iVendGateway.model.phonepe.PaymentDetail;
@@ -289,7 +291,8 @@ public class PhonePeRefundStatus {
 		}
 
 		
-
+		RefundDbModel refundDbModel = CommonService.getRefundTxnId(transactionId);
+		transactionId=refundDbModel.getTxnGuid();
 
 		//Appending url format with merchantId and transactionId
 		String urlformat = QRSTR+"/"+merchantId+"/"+transactionId+"/status";
@@ -309,8 +312,9 @@ public class PhonePeRefundStatus {
 		
 		
 		try {
+			
 			//URL url = new URL("https://mercury-t2.phonepe.com/v3/qr/init");  //live URL
-			String urlParameters  = "https://mercury-uat.phonepe.com/v3/refund/"+merchantId+"/"+transactionId+"/status";
+			String urlParameters  = "https://mercury-uat.phonepe.com/v3/transaction/"+merchantId+"/"+transactionId+"/status";
 			System.out.println("urlParameters "+urlParameters);
 			URL url = new URL(urlParameters);
 			HttpURLConnection connection = null;

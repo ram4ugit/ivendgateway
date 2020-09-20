@@ -1,16 +1,10 @@
 package com.limitlessmobility.iVendGateway.services.common;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,10 +17,8 @@ import com.limitlessmobil.ivendgateway.util.JwtTokenDecode;
 import com.limitlessmobil.ivendgateway.util.TokenAuthModel;
 import com.limitlessmobility.iVendGateway.controller.validation.CommonValidationUtility;
 import com.limitlessmobility.iVendGateway.dao.common.TransactionFilterDao;
-import com.limitlessmobility.iVendGateway.db.Util;
 import com.limitlessmobility.iVendGateway.model.common.PaymentHistoryFileData;
 import com.limitlessmobility.iVendGateway.model.common.PaymentHistoryRequestModel;
-import com.limitlessmobility.iVendGateway.model.common.PaymentHistoryResponseData;
 import com.limitlessmobility.iVendGateway.model.common.PaymentHistoryResponseModel;
 import static com.limitless.uvm.model.Constants.HEADER_STRING;
 import static com.limitless.uvm.model.Constants.TOKEN_PREFIX;
@@ -40,6 +32,9 @@ import codes.ResponseStatusCode;
 		@Autowired
 		private HttpServletRequest request;
 		
+		/*
+		 * paymentHistoryReport API is used to get details of payment for reports. 
+		 */
 		@RequestMapping(value = "/paymentHistoryReport", method = RequestMethod.POST)
 		@ResponseBody
 		public ResponseDTOObj paymentHistoryReport(@RequestBody PaymentHistoryRequestModel paymentHistoryRequestModel){
@@ -99,8 +94,8 @@ import codes.ResponseStatusCode;
 						responseDTO.setMessage(null);
 						
 						PaymentHistoryFileData paymentHistoryFileData = new PaymentHistoryFileData();
-						paymentHistoryFileData.setPath("http://139.59.73.155/iVendGateway/download/report");
-//						paymentHistoryFileData.setPath("http://139.59.7.72/iVendGateway/download/report");
+//						paymentHistoryFileData.setPath("http://139.59.73.155/iVendGateway/download/report");
+						paymentHistoryFileData.setPath("http://139.59.7.72/iVendGateway/download/report");
 						responseDTO.setResponseObj(paymentHistoryFileData);
 			           
 			       } 

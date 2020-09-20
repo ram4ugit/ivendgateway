@@ -1,6 +1,5 @@
 package com.limitlessmobility.iVendGateway.controller.amazonpay;
 
-
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -20,11 +19,6 @@ import javax.crypto.spec.SecretKeySpec;
 import org.apache.commons.codec.binary.Hex;
 
 import com.limitlessmobility.iVendGateway.model.amazonpay.RequestToSign;
-
-
-
-
-
  
 public class SignatureUtil {
 	 private static final String ALGORITHM = "AWS4-HMAC-SHA384";

@@ -945,6 +945,39 @@ public static String getOrderByTerminal(String terminalID, String walletId){
 		}
 		return refundDbModel;
 	}
+	
+	public static RefundDbModel getRefundTxnId(String orderId){
+
+		RefundDbModel refundDbModel = new RefundDbModel();
+		DbConfigration dbConfig = new DbConfigrationImpl();
+		System.out.println("Get getOperatorPspList DAO method is calling!!");
+		boolean isConnected = true;
+		OperatorPspEntity operatorEntity = new OperatorPspEntity();
+
+		Connection conn = dbConfig.getCon();
+		if (conn == null) {
+			isConnected = false;
+		}
+		Set<String> terminalListUnique = new HashSet<String>();
+		try {
+			
+			if (isConnected) {
+				
+				String sql = "SELECT * FROM payment_refund where merchant_order_id='"+orderId+"'";
+				Statement statement = conn.createStatement();
+				ResultSet result = statement.executeQuery(sql);
+				while (result.next()){ 
+					refundDbModel.setTxnGuid(result.getString("txn_guid"));
+				}
+			}
+		} catch (Exception e) {
+			System.out.println("Exception is.."+e);
+		}finally{
+			dbConfig.closeConnection(conn);
+		}
+		return refundDbModel;
+	}
+	
 	public static Set<String> getTerminalByCustomerAndLocAndMachine(int customerId, int customerLocation, String machineId){
 
 		DbConfigration dbConfig = new DbConfigrationImpl();
@@ -1194,8 +1227,8 @@ public static String getOrderByTerminal(String terminalID, String walletId){
       	  String line=""; 
       	  StringBuilder response=new StringBuilder();
       	  
-      	  URL url = new URL("http://vendiman.limitlessmobil.com:802/UVMGateWay/api/Order/ChangePaymentStatus");
-//      	  URL url = new URL("http://45.116.117.110:5559/MySqlGatewayStaging/api/Order/ChangePaymentStatus");
+//      	  URL url = new URL("http://vendiman.limitlessmobil.com:802/UVMGateWay/api/Order/ChangePaymentStatus");
+      	  URL url = new URL("http://45.116.117.110:5559/MySqlGatewayStaging/api/Order/ChangePaymentStatus");
 //      	String apiURL=Util.apiUrlReader();
 //		URL url = new URL(apiURL+"api/Order/ChangePaymentStatus");
 //		System.out.println("url "+url);

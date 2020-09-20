@@ -47,6 +47,11 @@ public class PaytmRefundServiceV2 {
 	private static final Logger logger = Logger.getLogger(PayTmCallbackService.class);
 	private static final String VERSION="v1";
 	
+	/**
+	 * This API is used to refund of paytm transaction
+	 * @param refundRequest
+	 * @return
+	 */
 	@RequestMapping(value = "/refundprocess", method = RequestMethod.POST)
 	@ResponseBody
 	public String getPayTmRefund(@RequestBody String refundRequest) {

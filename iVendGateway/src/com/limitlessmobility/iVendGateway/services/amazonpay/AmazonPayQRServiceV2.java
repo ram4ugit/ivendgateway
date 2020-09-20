@@ -60,6 +60,12 @@ public class AmazonPayQRServiceV2{
 	private static final String accessKeyId="07ccf898-a2cf-4765-b517-12330e931117";*/
 	
 	
+	/**
+	 * This API is Used for get QR of Amazonpay. Called by common QR.
+	 * @param amazonQRRequestData
+	 * @version 2
+	 * @throws Exception
+	 */
 	@RequestMapping(value = "/getqr", method = RequestMethod.POST)
 	@ResponseBody
 	private String getQr(@RequestBody AmazonQRRequestData amazonQRRequestData) throws Exception{

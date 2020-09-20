@@ -26,6 +26,9 @@ import com.limitlessmobility.iVendGateway.paytm.model.PaymentTransaction;
 @RequestMapping("/payment/ipn/transactions/amazonpay")
 public class AmazonaPayIPN {
 
+	/*
+	 * This API is used to store callback data of Amazonpay in Database. This API is called by Amazonpay.
+	 */
 	@RequestMapping(value = "/initiate", method = RequestMethod.POST)
 	@ResponseBody
 	public String getInstantNotification(@RequestBody String requestInfo)
@@ -38,7 +41,6 @@ public class AmazonaPayIPN {
 		boolean isexist = true;
 		String terminalId="";
 		String deviceId="";
-		String storeId="";
 
 		String jsonFormattedString2 = "";
 
@@ -153,7 +155,7 @@ public class AmazonaPayIPN {
 				
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println("Exception.. "+e);
 		}
 		
 
@@ -205,7 +207,7 @@ public class AmazonaPayIPN {
 				  
 				  } 
 		         }catch (Exception pte) { 
-		        	 // TODO: handle exception 
+		        	 System.out.println("Exception iss "+pte);
 		         }
 				 
 		
@@ -214,7 +216,7 @@ public class AmazonaPayIPN {
 				EventLogDao dao=new eventLogDaoImpl();
 				 dao.saveEventLog(eventLogs);
 			} catch (Exception e) {
-				// TODO: handle exception
+				System.out.println("Exception iss "+e);
 			}
 		  
 

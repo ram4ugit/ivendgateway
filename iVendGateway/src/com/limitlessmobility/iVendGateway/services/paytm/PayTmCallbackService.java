@@ -25,6 +25,12 @@ public class PayTmCallbackService {
 
 	private static final Logger logger = Logger.getLogger(PayTmCallbackService.class);
 	
+	
+	/**
+	 * This API is used to store paytm callback data, called by Paytm directly.
+	 * @param paymentTransactionRequest
+	 * @return null
+	 */
 	@RequestMapping(value = "/initiate", method = RequestMethod.POST)
 	@ResponseBody
 	public String getPayTmCallback(@RequestBody String paymentTransactionRequest) {

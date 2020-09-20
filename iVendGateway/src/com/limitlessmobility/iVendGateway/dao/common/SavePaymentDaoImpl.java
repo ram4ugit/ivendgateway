@@ -305,7 +305,7 @@ public class SavePaymentDaoImpl implements SavePaymentDao{
 							                		refundStatuss.setPaymentRefNo("");
 							                	}
 							              phoneperefundrequest.setTransactionid(rs.getString("order_id"));
-							              phoneperefundrequest.setAmount(rs.getLong("auth_amount"));
+							              phoneperefundrequest.setAmount(Long.parseLong(reData.getAmount()));
 							                              
 //							              ObjectMapper mapperObj = new ObjectMapper();
 							              String jsonStr ="";
@@ -341,7 +341,7 @@ public class SavePaymentDaoImpl implements SavePaymentDao{
 									            	  String refundStatusrequest = "{\"orderId\":\""+rs.getString("order_id")+"\",\"posId\":\""+rs.getString("terminal_id")+"\",\"amount\":\""+rs.getString("auth_amount")+"\",\"pspId\":\""+rs.getString("psp_id")+"\",\"app_id\":\""+rs.getString("app_id")+"\",\"source\":\"RefundBack\"}";
 									            	  
 									            	  //have to check checkSTatus of  refund
-									            	  /*try {
+									            	  try {
 									            		  String refundStatusResponse = refundStatusService.refundCheckStatus(refundStatusrequest);
 									            		  JSONObject refundStatusJson = new JSONObject(refundStatusResponse);
 									            		  if(refundStatusJson.getString("status").equalsIgnoreCase("success")) {
@@ -351,7 +351,7 @@ public class SavePaymentDaoImpl implements SavePaymentDao{
 									            		  System.out
 														        .println(e);
 									            		  refundStatuss.setStatusId(1);
-									            	  }*/
+									            	  }
 									            	  
 									            	  
 									            	  
